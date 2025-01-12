@@ -1,6 +1,6 @@
 sampleApp.controller('MoviesController', function($scope, $http, $log, $location) {
 
-    $scope.tagline = 'Ovdje rezervišite predstave!';
+    $scope.tagline = 'Streamline Your Movie and Play Listings!';
 
     $scope.booking = 'booking';
 

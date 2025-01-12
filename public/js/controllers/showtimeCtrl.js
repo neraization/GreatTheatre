@@ -1,6 +1,25 @@
 sampleApp.controller('showtimeController', function($scope, $http, $log, $location){
 
-  $scope.tagline = "Možete dodati vremena prikazivanja za sva pozorišta na ovoj stranici";
+  $scope.tagline = "Schedule Your Next Showtime with Ease";
+
+  $scope.formatTime = function () {
+    const time = $scope.showtime.showTimings; // e.g., 1970-01-01T20:31:00.000Z
+    if (time) {
+      const date = new Date(time);
+
+      // Get local hours and minutes
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+
+      // Format hours and minutes to always have two digits
+      const formattedHours = String(hours).padStart(2, '0');
+      const formattedMinutes = String(minutes).padStart(2, '0');
+
+      // Set the formatted time back to showTimings in HH:mm format
+      $scope.showtime.showTimings = `${formattedHours}:${formattedMinutes}`;
+    }
+  };
+
 
   var loadTheatres = function() {
     var cookieInfo = document.cookie;

@@ -1,6 +1,6 @@
 sampleApp.controller('cityController', function($scope, $http, $log, $location)
 {
-    $scope.tagline = 'Dodajte ovdje svoj grad';
+    $scope.tagline = 'City Management';
 
     var refresh = function() {
       var cookieInfo = document.cookie;

@@ -1,6 +1,6 @@
 sampleApp.controller('AssignController', function($scope, $http, $log, $location){
 
-	$scope.tagline = 'Sada možete kreirati predstave u gradu kojem želite!';
+	$scope.tagline = 'Here you can create a Screening for your Show!';
 
 	var getMovies = function(){
 			$http.get('/movie/getMovie').success(function(response) {

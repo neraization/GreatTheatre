@@ -4,13 +4,13 @@
       <div class="card">
         <div class="card-block test-xs-center">
           <center>
-            <span style="padding-right: 1cm;"><a href="/home" style="color:#FF4081; font-size: 130%;"><i class="fa fa-ticket" style="padding-right: 0.2cm; font-size: 130%;"></i>Pozorišta</a></span>
-            <span ng-show="adminCity" style="padding-right: 1cm;"><a href="/city"><i class="fa fa-map-marker" style="padding-right: 0.2cm;"></i>Grad</a></span>
-            <span ng-show="adminMovies" style="padding-right: 1cm;"><a href="/movies"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Predstava</a></span>
-            <span ng-show="adminTheatre" style="padding-right: 1cm;"><a href="/theatre"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Pozorište</a></span>
-            <span ng-show="adminShowtime" style="padding-right: 1cm;"><a href="/showtime"><i class="fa fa-clock-o" style="padding-right: 0.2cm;"></i>Vrijeme</a></span>
-            <span ng-show="adminBooking" style="padding-right: 1cm;"><a href="/booking"><i class="fa fa-book" style="padding-right: 0.2cm;"></i>Rezervisano</a></span>
-            <span ng-show="adminAssign" style="padding-right: 1cm;"><a href="/assign"><i class="fa fa-pencil" style="padding-right: 0.2cm;"></i>Napravi</a></span>
+            <span style="padding-right: 1cm;"><a href="/home" style="color:#FF4081; font-size: 130%;"><i class="fa fa-ticket" style="padding-right: 0.2cm; font-size: 130%;"></i>Great Theatre</a></span>
+            <span ng-show="adminCity" style="padding-right: 1cm;"><a href="/city"><i class="fa fa-map-marker" style="padding-right: 0.2cm;"></i>City</a></span>
+            <span ng-show="adminMovies" style="padding-right: 1cm;"><a href="/movies"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Showing</a></span>
+            <span ng-show="adminTheatre" style="padding-right: 1cm;"><a href="/theatre"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Theatre</a></span>
+            <span ng-show="adminShowtime" style="padding-right: 1cm;"><a href="/showtime"><i class="fa fa-clock-o" style="padding-right: 0.2cm;"></i>Screening Time</a></span>
+            <span ng-show="adminBooking" style="padding-right: 1cm;"><a href="/booking"><i class="fa fa-book" style="padding-right: 0.2cm;"></i>Reserved</a></span>
+            <span ng-show="adminAssign" style="padding-right: 1cm;"><a href="/assign"><i class="fa fa-pencil" style="padding-right: 0.2cm;"></i>Create</a></span>
           </center>
         </div>
       </div>
@@ -28,14 +28,14 @@
 
 
 <div class="container jumbotron text-center wow fadeInUp" data-wow-delay="0.5s">
-    <h1>Uradi sam</h1>
+    <h1>Create a Screening</h1>
 
     <p>{{ tagline }}</p>
 
     <div class="nostyle">
         <center>
 
-                  <label>Odaberite grad</label>
+                  <label>Choose City</label>
                   <select class="form-control" ng-model="assign.cityName" ng-change="selectCity(assign)" >
                    <option ng-repeat="city in cityList" ng-value="city.cityName" value="ng-value" >
                        {{city.cityName}}
@@ -44,50 +44,50 @@
 
 
 
-                  <label>Odaberite pozorište</label>
+                  <label>Choose Theatre</label>
                   <select class="form-control" ng-model="assign.theatreName" ng-change="selectTheatre(assign)" >
                        <option ng-repeat="theatreList in returnValue1" ng-value ="theatreList.theatreName">
                            {{theatreList.theatreName}}
                        </option>
                   </select>
 
-                  <label>Odaberite vrijeme prikazivanja</label>
+                  <label>Choose Screening Time</label>
                   <select class="form-control" ng-model="assign.showTime" ng-change="selectshowTime(assign)" >
                        <option ng-repeat="showtimeList in returnTimings" ng-value ="showtimeList.showTimings">
                            {{showtimeList.showTimings}}
                        </option>
                   </select>
 
-                  <label>Odaberi predstavu</label>
+                  <label>Choose Show</label>
                   <select class="form-control" ng-model="assign.movieTitle">
                        <option ng-repeat="movieList in moviList" ng-value ="movieList.moviTitle">
                            {{movieList.moviTitle}}
                        </option>
                   </select>
 
-                  <label>Datum izlaska</label>
+                  <label>Release Date</label>
                   <input type="date" ng-model="assign.fromDate" placeholder="yyyy-MM-dd" required />
 
-                  <label>Datum završetka</label>
+                  <label>End Date</label>
                   <input type="date" ng-model="assign.toDate" placeholder="yyyy-MM-dd" required />
 
                   <br />
 
-                    <button type="button" ng-click="addAssign(assign)" class="btn btn-outline-success waves-effect">Dodaj</button>
-                    <button ng-click="updateAssign(assign)" class="btn btn-outline-primary waves-effect">Ažuriraj</button>
+                    <button type="button" ng-click="addAssign(assign)" class="btn btn-outline-success waves-effect">Create</button>
+                    <button ng-click="updateAssign(assign)" class="btn btn-outline-primary waves-effect">Update</button>
 
               <hr />
 
             <table class="table table-inverse">
                 <thead>
                     <tr>
-                        <th>Grad</th>
-                        <th>Pozorište</th>
-                        <th>Vrijeme prikaza</th>
-                        <th>Predstava</th>
-                        <th>Datum prikazivanja</th>
-                        <th>Datum završetka</th>
-                        <th>Opcija</th>
+                        <th>City</th>
+                        <th>Theatre</th>
+                        <th>Screening Time</th>
+                        <th>Show</th>
+                        <th>Release Date</th>
+                        <th>End Date</th>
+                        <th>Options</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -101,8 +101,8 @@
                         <td>{{assign.movieTitle}}</td>
                         <td>{{assign.fromDate}}</td>
                         <td>{{assign.toDate}}</td>
-                        <td><button ng-click="removeAssign(assign)" class="btn btn-danger waves-effect">Obriši</button></td>
-                        <td><button ng-click="editAssign(assign)" class="btn btn-primary waves-effect">Uredi</button></td>
+                        <td><button ng-click="removeAssign(assign)" class="btn btn-danger waves-effect">Delete</button></td>
+                        <td><button ng-click="editAssign(assign)" class="btn btn-primary waves-effect">Edit</button></td>
                     </tr>
                 </tbody>
             </table>

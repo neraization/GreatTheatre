@@ -1,7 +1,7 @@
 sampleApp.controller('BookController', function($scope, $http, $log, $location)
 {
 
-    $scope.tagline = 'Sve rezervacije na ovoj stranici';
+    $scope.tagline = 'All Reservations can be found here!';
 
     var refresh = function() {
       var cookieInfo = document.cookie;

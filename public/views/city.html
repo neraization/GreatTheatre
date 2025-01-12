@@ -3,15 +3,15 @@
     <div class="col-md-11 align-self-center">
       <div class="card">
         <div class="card-block test-xs-center">
-          <center>
-            <span style="padding-right: 1cm;"><a href="/home" style="color:#FF4081; font-size: 130%;"><i class="fa fa-ticket" style="padding-right: 0.2cm; font-size: 130%;"></i>Pozorišta</a></span>
-            <span ng-show="adminCity" style="padding-right: 1cm;"><a href="/city"><i class="fa fa-map-marker" style="padding-right: 0.2cm;"></i>Grad</a></span>
-            <span ng-show="adminMovies" style="padding-right: 1cm;"><a href="/movies"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Predstava</a></span>
-            <span ng-show="adminTheatre" style="padding-right: 1cm;"><a href="/theatre"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Pozorište</a></span>
-            <span ng-show="adminShowtime" style="padding-right: 1cm;"><a href="/showtime"><i class="fa fa-clock-o" style="padding-right: 0.2cm;"></i>Vrijeme</a></span>
-            <span ng-show="adminBooking" style="padding-right: 1cm;"><a href="/booking"><i class="fa fa-book" style="padding-right: 0.2cm;"></i>Rezervisano</a></span>
-            <span ng-show="adminAssign" style="padding-right: 1cm;"><a href="/assign"><i class="fa fa-pencil" style="padding-right: 0.2cm;"></i>Napravi</a></span>
-          </center>
+            <center>
+                <span style="padding-right: 1cm;"><a href="/home" style="color:#FF4081; font-size: 130%;"><i class="fa fa-ticket" style="padding-right: 0.2cm; font-size: 130%;"></i>Great Theatre</a></span>
+                <span ng-show="adminCity" style="padding-right: 1cm;"><a href="/city"><i class="fa fa-map-marker" style="padding-right: 0.2cm;"></i>City</a></span>
+                <span ng-show="adminMovies" style="padding-right: 1cm;"><a href="/movies"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Showing</a></span>
+                <span ng-show="adminTheatre" style="padding-right: 1cm;"><a href="/theatre"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Theatre</a></span>
+                <span ng-show="adminShowtime" style="padding-right: 1cm;"><a href="/showtime"><i class="fa fa-clock-o" style="padding-right: 0.2cm;"></i>Screening Time</a></span>
+                <span ng-show="adminBooking" style="padding-right: 1cm;"><a href="/booking"><i class="fa fa-book" style="padding-right: 0.2cm;"></i>Reserved</a></span>
+                <span ng-show="adminAssign" style="padding-right: 1cm;"><a href="/assign"><i class="fa fa-pencil" style="padding-right: 0.2cm;"></i>Create</a></span>
+            </center>
         </div>
       </div>
     </div>
@@ -27,7 +27,7 @@
 <br>
 
 <div class="container jumbotron text-center wow fadeInUp" data-wow-delay="0.5s">
-    <h1>Grad</h1>
+    <h1>City</h1>
 
     <p>{{ tagline }}</p>
 
@@ -36,8 +36,8 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Popis gradova</th>
-                        <th>Opcija</th>
+                        <th>Available Cities</th>
+                        <th>Options</th>
                         <th>
 
                         </th>
@@ -50,16 +50,16 @@
 
                         <td><input ng-model="city.cityName" /></td>
 
-                        <td><button ng-click="addCity(city)" class="btn btn-dark-green waves-effect">Dodaj </button></td>
+                        <td><button ng-click="addCity(city)" class="btn btn-dark-green waves-effect">Create</button></td>
 
-                        <td><button ng-click="updateCity(city)" class="btn btn-mdb waves-effect">Ažuriraj</button></td>
+                        <td><button ng-click="updateCity(city)" class="btn btn-mdb waves-effect">Update</button></td>
 
                     </tr>
                     <tr ng-repeat=" city in cityList">
                         <td>{{city.cityName}}</td>
 
-                        <td><button ng-click="removeCity(city)" class="btn btn-danger waves-effect">Obriši</button></td>
-                        <td><button ng-click="editCity(city)" class="btn btn-primary waves-effect">Uredi</button></td>
+                        <td><button ng-click="removeCity(city)" class="btn btn-danger waves-effect">Delete</button></td>
+                        <td><button ng-click="editCity(city)" class="btn btn-primary waves-effect">Edit</button></td>
                     </tr>
                 </tbody>
             </table>

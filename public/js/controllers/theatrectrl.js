@@ -1,6 +1,6 @@
 sampleApp.controller('theatreController', function($scope, $http, $log, $location){
 
-    $scope.tagline = 'Upravljajte svojim pozorištem!';
+    $scope.tagline = 'Theatre Administration';
 
 var loadCities = function() {
         $http.get('/city/getCity').success(function(response) {
