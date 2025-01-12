@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-11 align-self-center">
+      <div class="card">
+        <div class="card-block test-xs-center">
+          <center>
+            <span style="padding-right: 1cm;"><a href="/home" style="color:#FF4081; font-size: 130%;"><i class="fa fa-ticket" style="padding-right: 0.2cm; font-size: 130%;"></i>Pozorišta</a></span>
+            <span ng-show="adminCity" style="padding-right: 1cm;"><a href="/city"><i class="fa fa-map-marker" style="padding-right: 0.2cm;"></i>Grad</a></span>
+            <span ng-show="adminMovies" style="padding-right: 1cm;"><a href="/movies"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Predstava</a></span>
+            <span ng-show="adminTheatre" style="padding-right: 1cm;"><a href="/theatre"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Pozorište</a></span>
+            <span ng-show="adminShowtime" style="padding-right: 1cm;"><a href="/showtime"><i class="fa fa-clock-o" style="padding-right: 0.2cm;"></i>Vrijeme</a></span>
+            <span ng-show="adminBooking" style="padding-right: 1cm;"><a href="/booking"><i class="fa fa-book" style="padding-right: 0.2cm;"></i>Rezervisano</a></span>
+            <span ng-show="adminAssign" style="padding-right: 1cm;"><a href="/assign"><i class="fa fa-pencil" style="padding-right: 0.2cm;"></i>Napravi</a></span>
+          </center>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 align-self-center">
+      <div class="card">
+        <div class="card-block test-xs-center waves-effect" ng-click="logoutUser()">
+          <center><i class="fa fa-power-off"></i></center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+
+<div class="container jumbotron text-center wow fadeInUp" data-wow-delay="0.5s">
+    <h1>Kreirajte pozorišne zapise</h1>
+
+    <p>{{ tagline }}</p>
+
+    <div>
+        <center>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Naziv pozorišta</th>
+                        <th>Broj sjedišta</th>
+                        <th>Cijena ulaznica</th>
+                        <th>
+                          Opcija
+                        </th>
+                        <th>
+
+                        </th>
+                        <th>
+
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+
+                        <td><input placeholder="Naziv pozorišta"  ng-model="theatre.theatreName" /></td>
+                        <td><input type="number" placeholder="Broj sjedišta"  ng-model="theatre.theatreSeating" /></td>
+                        <td><input type="number" placeholder="Cijena ulaznica"  ng-model="theatre.theatrePrice" /></td>
+                        <td><select class="form-control" ng-model="theatre.city">
+                                                     <option ng-repeat="city in cityList" ng-value ="city.cityName">
+                                                         {{city.cityName}}
+                                                     </option>
+
+                                                    </select></td>
+                        <td><button ng-click="addTheatre(theatre)" class="btn btn-dark-green waves-effect">Dodaj</button>
+                        </td>
+
+                        <td><button ng-click="updateTheatre(theatre)" class="btn btn-mdb waves-effect">Ažuriraj</button></td>
+
+                    </tr>
+                    <tr ng-repeat="theatre in theatreList">
+                      <td>{{theatre.theatreName}}</td>
+                      <td>{{theatre.theatreSeats}}</td>
+                      <td>{{theatre.ticketPrice}}</td>
+                      <td>{{theatre.cityName}}</td>
+
+                      <td><button ng-click="removeTheatre(theatre)" class="btn btn-danger waves-effect">Obriši</button></td>
+                      <td><button ng-click="editTheatre(theatre)" class="btn btn-primary waves-effect">Uredi</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>

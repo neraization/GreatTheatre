@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-11 align-self-center">
+      <div class="card">
+        <div class="card-block test-xs-center">
+          <center>
+            <span style="padding-right: 1cm;"><a href="/home" style="color:#FF4081; font-size: 130%;"><i class="fa fa-ticket" style="padding-right: 0.2cm; font-size: 130%;"></i>Pozorišta</a></span>
+            <span ng-show="adminCity" style="padding-right: 1cm;"><a href="/city"><i class="fa fa-map-marker" style="padding-right: 0.2cm;"></i>Grad</a></span>
+            <span ng-show="adminMovies" style="padding-right: 1cm;"><a href="/movies"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Predstava</a></span>
+            <span ng-show="adminTheatre" style="padding-right: 1cm;"><a href="/theatre"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Pozorište</a></span>
+            <span ng-show="adminShowtime" style="padding-right: 1cm;"><a href="/showtime"><i class="fa fa-clock-o" style="padding-right: 0.2cm;"></i>Vrijeme</a></span>
+            <span ng-show="adminBooking" style="padding-right: 1cm;"><a href="/booking"><i class="fa fa-book" style="padding-right: 0.2cm;"></i>Rezervisano</a></span>
+            <span ng-show="adminAssign" style="padding-right: 1cm;"><a href="/assign"><i class="fa fa-pencil" style="padding-right: 0.2cm;"></i>Kreiraj</a></span>
+          </center>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 align-self-center">
+      <div class="card">
+        <div class="card-block test-xs-center waves-effect" ng-click="logoutUser()">
+          <center><i class="fa fa-power-off"></i></center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container" ng-show="headerBox">
+	<div class="row">
+		<div class="col-sm-3" ng-repeat="assign in assignList | filter: userFilter">
+			<div class="card card-dark">
+    		<div class="view overlay hm-white-slight">
+        	<img src="{{assign.moviPoster}}" class="img-fluid" alt="">
+        	<a>
+          <div class="mask waves-effect waves-light"></div>
+        		</a>
+    			</div>
+					<center>
+			    <div class="card-block" ng-model="assign">
+			        <h4 class="card-title">{{assign.movieTitle}}</h4>
+			        <hr>
+			        <p class="card-text">Pozoriste: {{assign.theatreName}}</p>
+							<p class="card-text">Vrijeme Predstave: {{assign.showTime}}</p>
+							<p class="card-text">Grad: {{assign.cityName}}</p>
+							<p class="card-text">Broj preostalih sjedista: {{assign.remSeats}}/{{assign.theatreSeats}}</p>
+							<hr />
+							<a type="button" ng-click="bookTickets(assign)" class="link-text"><h5 class="btn-flat waves-effect">Rezervisi<i class="fa fa-chevron-right"></i></h5></a>
+			    </div>
+				</div>
+			<div class="padbelow"></div>
+		</div>
+	</div>
+</div>
+
+<div class="container jumbotron text-center" ng-show="movieList">
+	<h1>Trenutno igra</h1>
+
+	<input ng-model="userFilter" type="text" placeholder="Pretrazi po Predstavama, Pozoristima, Gradovima i ostalom..." autofocus>
+	<style type="text/css">
+		input {text-align: center}
+	</style>
+	<br><br>
+</div>
+<br>
+<div class="container jumbotron text-center wow fadeInUp" ng-show="bookingWindow">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card-block card-dark">
+				<center><h1>Kupi karte za {{assignList1[0].movieTitle}}</h1></center>
+				<p>{{assignList1[0].showTime}}, {{assignList1[0].theatreName}}, {{assignList1[0].cityName}}</p>
+				<hr>
+				<p ng-model="assign.ticketPrice">Cijena karte: {{assignList1[0].ticketPrice}}</p>
+				<input type="number" placeholder="Broj mjesta"  ng-model="booking.userSeats" ng-change="calculateTotal(booking)" autofocus>
+				<br><br>
+				<button type="button" class="btn btn-success" ng-click="bookNow(booking)">Plati {{totalAmount}} KM i nastavi</button>
+				<button type="button" class="btn btn-primary" ng-click="goBack()">Odustani</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container jumbotron text-center wow fadeInUp" ng-show="orderSuccess" data-wow-delay="0.3s">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card-block">
+				<center><h2>Rezervisano {{booking.userSeats}} mjesta uspjesno!</h2>
+					<hr>
+					<i style="font-size: 150px;" class="fa fa-check-circle wow fadeInUp" data-wow-delay="0.8s" aria-hidden="true"></i>
+					<hr>
+					<h5><strong>Broj narudzbe: {{orderId}}</strong></h5>
+					<h5>Predstava: {{assignList1[0].movieTitle}}</h5>
+					<h5>Lokacija: {{assignList1[0].theatreName}}, {{assignList1[0].cityName}}</h5>
+					<h2>Uzivajte u predstavi!</h2>
+					<button type="button" class="btn btn-primary" ng-click="goBack()">Vrati se na pocetnu stranu</button>
+				</center>
+			</div>
+		</div>
+	</div>
+</div>
