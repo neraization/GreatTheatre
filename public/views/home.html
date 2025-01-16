@@ -48,14 +48,17 @@
 					<center>
 			    <div class="card-block" ng-model="assign">
 			        <h4 class="card-title">{{assign.movieTitle}}</h4>
+					<p class="card-text">{{assign.moviGenre}}</p>
+					<p class="card-text">Actors: {{assign.moviActors}}</p>
 			        <hr>
 			        <p class="card-text">Theatre: {{assign.theatreName}}</p>
 							<p class="card-text">Screening Time: {{assign.showTime}}</p>
 							<p class="card-text">City: {{assign.cityName}}</p>
 							<p class="card-text">Seats Remaining: {{assign.remSeats}}/{{assign.theatreSeats}}</p>
+							<p class="card-text">Ticket Price: {{assign.ticketPrice}} KM</p>
 							<hr />
 							<a type="button" ng-click="bookTickets(assign)" class="link-text"><h5 class="btn-flat waves-effect">Reserve Seats<i class="fa fa-chevron-right"></i></h5></a>
-			    </div>
+			    </div>		
 				</div>
 			<div class="padbelow"></div>
 		</div>

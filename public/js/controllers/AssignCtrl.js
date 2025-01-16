@@ -163,12 +163,16 @@ sampleApp.controller('AssignController', function($scope, $http, $log, $location
 		moviGenre = $scope.moviList1[0].moviGenre;
 		moviLanguage = $scope.moviList1[0].moviLanguage;
 		moviPoster = $scope.moviList1[0].moviPoster;
+		
+
 
 		theatreSeats = $scope.theatreList1[0].theatreSeats;
-		ticketPrice = $scope.theatreList1[0].ticketPrice;
+		//ticketPrice = $scope.theatreList1[0].ticketPrice;
 
 		console.log($scope.assign.fromDate);
 		console.log(assign.toDate);
+
+		var ticketPrice = $scope.assign.ticketPrice;
 
 		var fromDate1 = moment($scope.assign.fromDate).format('l');
   	var toDate1 = moment($scope.assign.toDate).format('l');

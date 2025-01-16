@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var theatreSchema = mongoose.Schema({                                                                      // i am creating creating schema for theatre
 	theatreName: String,
 	theatreSeats: Number,
-	ticketPrice: Number,
+	//ticketPrice: Number,
 	cityName: String
 });
 
@@ -34,7 +34,7 @@ console.log('Till here no problem');
 var theatre = new Theatre({                                                                                                 // i am getting all the inputs into the Theatre model and i am passing the value to the theatre variable
   theatreName : req.body.TName,
   theatreSeats: req.body.TSeats,
-  ticketPrice: req.body.TPrice,
+  //ticketPrice: req.body.TPrice,
   cityName: req.body.TCity
   });
 console.log(theatre)

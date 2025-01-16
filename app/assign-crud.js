@@ -25,7 +25,8 @@ var assignSchema = mongoose.Schema({
     moviActors: String,
     theatreSeats: String,
     ticketPrice: String,
-    remSeats: String
+    remSeats: String,
+    ticketPrice: Number,
  });
 
 var Assign = mongoose.model('Assign', assignSchema, 'assigning');

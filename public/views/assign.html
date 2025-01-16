@@ -71,6 +71,10 @@
                   <label>End Date</label>
                   <input type="date" ng-model="assign.toDate" placeholder="yyyy-MM-dd" required />
 
+                  <div class="form-group text-center">
+                  <label>Ticket Price</label>
+                  <input type="number" ng-model="assign.ticketPrice" class="form-control text-center" placeholder="Set Price for Ticket" required />
+                </div>
                   <br />
 
                     <button type="button" ng-click="addAssign(assign)" class="btn btn-outline-success waves-effect">Create</button>
@@ -85,6 +89,7 @@
                         <th>Theatre</th>
                         <th>Screening Time</th>
                         <th>Show</th>
+                        <th>Ticket Price</th>
                         <th>Release Date</th>
                         <th>End Date</th>
                         <th>Options</th>
@@ -99,6 +104,7 @@
                         <td>{{assign.theatreName}}</td>
                         <td>{{assign.showTime}}</td>
                         <td>{{assign.movieTitle}}</td>
+                        <td>{{assign.ticketPrice}}</td>
                         <td>{{assign.fromDate}}</td>
                         <td>{{assign.toDate}}</td>
                         <td><button ng-click="removeAssign(assign)" class="btn btn-danger waves-effect">Delete</button></td>

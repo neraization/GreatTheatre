@@ -61,7 +61,7 @@ refresh();
         var  theatreObj ={
             TName:theatre.theatreName,                //creating one object to store all data in one
             TSeats:theatre.theatreSeating,
-            TPrice:theatre.theatrePrice,
+            //TPrice:theatre.theatrePrice,
             TCity:theatre.city
         };
 

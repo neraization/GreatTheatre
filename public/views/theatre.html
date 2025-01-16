@@ -39,7 +39,6 @@
                     <tr>
                         <th>Theatre Name</th>
                         <th>Seats Capacity</th>
-                        <th>Ticket Price</th>
                         <th>Available Cities</th>
                         <th>
                           Options
@@ -59,7 +58,6 @@
 
                         <td><input placeholder="Theatre Name"  ng-model="theatre.theatreName" /></td>
                         <td><input type="number" placeholder="Number of Seats"  ng-model="theatre.theatreSeating" /></td>
-                        <td><input type="number" placeholder="Ticket Price"  ng-model="theatre.theatrePrice" /></td>
                         <td><select class="form-control" ng-model="theatre.city">
                                                      <option ng-repeat="city in cityList" ng-value ="city.cityName">
                                                          {{city.cityName}}
@@ -75,7 +73,6 @@
                     <tr ng-repeat="theatre in theatreList">
                       <td>{{theatre.theatreName}}</td>
                       <td>{{theatre.theatreSeats}}</td>
-                      <td>{{theatre.ticketPrice}}</td>
                       <td>{{theatre.cityName}}</td>
 
                       <td><button ng-click="removeTheatre(theatre)" class="btn btn-danger waves-effect">Delete</button></td>
