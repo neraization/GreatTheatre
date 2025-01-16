@@ -10,8 +10,16 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/home.html',
 			controller: 'MainController'
 		})
+		.when('/landing', {
+			templateUrl: 'views/landing.html',
+			controller: 'UserController'
+		})
 		.when('/booking', {
 			templateUrl: 'views/booking.html',
+			controller: 'BookController'
+		})
+		.when('/personalBooking', {
+			templateUrl: 'views/personalBooking.html',
 			controller: 'BookController'
 		})
 		.when('/movies', {

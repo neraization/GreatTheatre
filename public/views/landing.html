@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-11 align-self-center">
+        <div class="card">
+          <div class="card-block test-xs-center">
+              
+                  <span style="padding-right: 1cm;"><a href="/landing" style="color:#FF4081; font-size: 130%;"><i class="fa fa-ticket" style="padding-right: 0.2cm; font-size: 130%;"></i>Great Theater</a></span>
+                  <span ng-show="adminBooking" style="padding-right: 1cm;"><a href="/personalBooking"><i class="fa fa-book" style="padding-right: 0.2cm;"></i>Reserved</a></span>                 
+              
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1 align-self-center">
+        <div class="card">
+          <div class="card-block test-xs-center waves-effect" ng-click="logoutUser()">
+            <center><i class="fa fa-power-off"></i></center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container jumbotron text-center" ng-show="movieList">
+      <h1>Showing Now</h1>
+  
+      <input ng-model="userFilter" type="text" placeholder="Search for Cities, Theatres, Showings, etc." autofocus>
+      <style type="text/css">
+          input {text-align: center}
+      </style>
+      <br><br>
+  </div>
+  <br>
+  <div class="container" ng-show="headerBox">
+      <div class="row">
+          <div class="col-sm-3" ng-repeat="assign in assignList | filter: userFilter">
+              <div class="card card-dark">
+              <div class="view overlay hm-white-slight">
+              <img src="{{assign.moviPoster}}" class="img-fluid" alt="">
+              <a>
+            <div class="mask waves-effect waves-light"></div>
+                  </a>
+                  </div>
+                      <center>
+                  <div class="card-block" ng-model="assign">
+                      <h4 class="card-title">{{assign.movieTitle}}</h4>
+                      <hr>
+                      <p class="card-text">Theatre: {{assign.theatreName}}</p>
+                              <p class="card-text">Screening Time: {{assign.showTime}}</p>
+                              <p class="card-text">City: {{assign.cityName}}</p>
+                              <p class="card-text">Seats Remaining: {{assign.remSeats}}/{{assign.theatreSeats}}</p>
+                              <hr />
+                              <a type="button" ng-click="bookTickets(assign)" class="link-text"><h5 class="btn-flat waves-effect">Reserve Seats<i class="fa fa-chevron-right"></i></h5></a>
+                  </div>
+                  </div>
+              <div class="padbelow"></div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="container jumbotron text-center wow fadeInUp" ng-show="bookingWindow">
+      <div class="row">
+          <div class="col-sm-12">
+              <b class="card-block card-dark">
+                  <center><h1>Buy Tickets for <b>{{assignList1[0].movieTitle}}</b></h1></center>
+                  <div class="view overlay hm-white-slight">
+                      <center><img src="{{assignList1[0].moviPoster}}" class="img-fluid" alt=""></center>
+                      <a>
+                          <div class="mask waves-effect waves-light"></div>
+                      </a>
+                  </div>
+                  <b><p><span> Screening Time: </span>{{assignList1[0].showTime}} h</p></b>
+                  <b><p><span> Theatre: </span>{{assignList1[0].theatreName}}</p></b>
+                  <b><p><span> City: </span>{{assignList1[0].cityName}}</p></b>
+                  <hr>
+                  <p ng-model="assign.ticketPrice">Ticket Price: {{assignList1[0].ticketPrice}} KM</p>
+                  <input type="number" placeholder="Number of seats"  ng-model="booking.userSeats" ng-change="calculateTotal(booking)" autofocus>
+                  <br><br>
+                  <button type="button" class="btn btn-success" ng-click="bookNow(booking)">Pay {{totalAmount}} KM and continue</button>
+                  <button type="button" class="btn btn-primary" ng-click="goBack()">Go back</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="container jumbotron text-center wow fadeInUp" ng-show="orderSuccess" data-wow-delay="0.3s">
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="card-block">
+                  <center><h2>You Reserved {{booking.userSeats}} seats successfully !</h2>
+                      <hr>
+                      <i style="font-size: 150px;" class="fa fa-check-circle wow fadeInUp" data-wow-delay="0.8s" aria-hidden="true"></i>
+                      <hr>
+                      <h5><strong>Orer Id: {{orderId}}</strong></h5>
+                      <h5>Show: {{assignList1[0].movieTitle}}</h5>
+                      <h5>Location: {{assignList1[0].theatreName}}, {{assignList1[0].cityName}}</h5>
+                      <h2>Enjoy!</h2>
+                      <button type="button" class="btn btn-primary" ng-click="goBack()">Go back to the Landing Page</button>
+                  </center>
+              </div>
+          </div>
+      </div>
+  </div>
+  

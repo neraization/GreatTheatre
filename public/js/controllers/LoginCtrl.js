@@ -14,8 +14,12 @@ sampleApp.controller('LoginController', function ($scope, $http, $location, $log
             $scope.adminShowtime = false;
             $scope.adminBookings = false;
         } else {
+            if (role === "admin") {
             $location.path('/home');
+        } else {
+            $location.path('/landing');
         }
+    }
     };
     refresh();
   
@@ -61,6 +65,7 @@ sampleApp.controller('LoginController', function ($scope, $http, $location, $log
                     $scope.adminShowtime = true;
                     $scope.adminBookings = true;
                     $scope.adminAssign = true;
+                    $location.path('/home')
                 } else {
                     $scope.adminCity = false;
                     $scope.adminTheatre = false;
@@ -68,9 +73,10 @@ sampleApp.controller('LoginController', function ($scope, $http, $location, $log
                     $scope.adminShowtime = false;
                     $scope.adminBookings = false;
                     $scope.adminAssign = false;
+                    $location.path('/landing')
                 }
   
-                $location.path('/home');
+                //$location.path('/home');
             })
             .catch((error) => {
                 console.error("Login failed:", error);
