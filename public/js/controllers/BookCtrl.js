@@ -3,14 +3,18 @@ sampleApp.controller('BookController', function($scope, $http, $log, $location)
 
     $scope.tagline = 'All Reservations can be found here!';
 
-    $scope.checkAccess = function() {
-        var cookieInfo = document.cookie;
-
-        if (!cookieInfo.includes("role=registered") && !cookieInfo.includes("role=admin")) {
-            alert("Access denied. Redirecting to Home Page.");
-            $location.path('/home');
-        }
-    };
+   // Helper function to read cookies
+	/*function getCookie(name) {
+		const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+		return match ? match[2] : null;
+	  }
+   
+    const role = getCookie('role');
+  if (role !== 'admin') {
+    alert('Access denied for Basic users.');
+    $location.path('/home'); // Redirect unauthorized users to /home
+    return;
+  } */
 
     var refresh = function() {
       var cookieInfo = document.cookie;

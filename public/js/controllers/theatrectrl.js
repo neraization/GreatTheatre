@@ -2,14 +2,13 @@ sampleApp.controller('theatreController', function($scope, $http, $log, $locatio
 
     $scope.tagline = 'Theatre Administration';
 
-        $scope.checkAccess = function() {
-            var cookieInfo = document.cookie;
-
-            if (!cookieInfo.includes("role=registered") && !cookieInfo.includes("role=admin")) {
-                alert("Access denied. Redirecting to Home Page.");
-                $location.path('/home');
-            }
-        };
+   
+    const role = getCookie('role');
+  if (role !== 'admin') {
+    alert('Access denied for Basic users.');
+    $location.path('/home'); // Redirect unauthorized users to /home
+    return;
+  };
 
 var loadCities = function() {
         $http.get('/city/getCity').success(function(response) {
@@ -109,5 +108,10 @@ refresh();
         });
     };
 
-}
-);
+      // Helper function to read cookies
+	function getCookie(name) {
+		const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+		return match ? match[2] : null;
+	  };
+
+});

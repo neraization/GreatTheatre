@@ -2,14 +2,18 @@ sampleApp.controller('showtimeController', function($scope, $http, $log, $locati
 
   $scope.tagline = "Schedule Your Next Showtime with Ease";
 
-  $scope.checkAccess = function() {
-    var cookieInfo = document.cookie;
-
-    if (!cookieInfo.includes("role=registered") && !cookieInfo.includes("role=admin")) {
-      alert("Access denied. Redirecting to Home Page.");
-      $location.path('/home');
-    }
-  };
+  // Helper function to read cookies
+	function getCookie(name) {
+		const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+		return match ? match[2] : null;
+	  }
+   
+    const role = getCookie('role');
+  if (role !== 'admin') {
+    alert('Access denied for Basic users.');
+    $location.path('/home'); // Redirect unauthorized users to /home
+    return;
+  }
 
   $scope.formatTime = function () {
     const time = $scope.showtime.showTimings; // e.g., 1970-01-01T20:31:00.000Z
