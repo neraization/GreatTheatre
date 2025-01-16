@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import firebase from "firebase/compat";
 require("dotenv").config();
 
 // Initialize Firebase
@@ -17,3 +18,6 @@ var config = {
   // Initialize Firebase
 const app = initializeApp(config);
 //const analytics = getAnalytics(app);
+
+
+

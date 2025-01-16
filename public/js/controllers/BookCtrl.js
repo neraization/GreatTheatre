@@ -3,6 +3,15 @@ sampleApp.controller('BookController', function($scope, $http, $log, $location)
 
     $scope.tagline = 'All Reservations can be found here!';
 
+    $scope.checkAccess = function() {
+        var cookieInfo = document.cookie;
+
+        if (!cookieInfo.includes("role=registered") && !cookieInfo.includes("role=admin")) {
+            alert("Access denied. Redirecting to Home Page.");
+            $location.path('/home');
+        }
+    };
+
     var refresh = function() {
       var cookieInfo = document.cookie;
   		if(cookieInfo == "") {

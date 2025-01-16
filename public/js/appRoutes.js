@@ -30,6 +30,22 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/assign.html',
 			controller: 'AssignController'
 		})
+		/*.when('/assign', {
+			templateUrl: 'views/assign.html',
+			controller: 'AssignController',
+			resolve: {
+			  access: function ($location) {
+				const role = getCookie('role');
+				if (role !== 'admin') {
+				  alert('Access denied for Basic users');
+				  $location.path('/home'); // Redirect to /home if not admin
+				}
+			  },
+			},
+		  })
+		  .otherwise({
+			redirectTo: '/home',
+		  })*/
     .when('/theatre', {
 			templateUrl: 'views/theatre.html',
 			controller: 'theatreController'
@@ -37,4 +53,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 	$locationProvider.html5Mode(true);
 
+	// Helper function to read cookies
+	function getCookie(name) {
+		const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+		return match ? match[2] : null;
+	  }
 }]);

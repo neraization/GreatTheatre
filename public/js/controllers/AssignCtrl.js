@@ -2,6 +2,13 @@ sampleApp.controller('AssignController', function($scope, $http, $log, $location
 
 	$scope.tagline = 'Here you can create a Screening for your Show!';
 
+	const role = getCookie('role');
+  if (role !== 'admin') {
+    alert('Access denied for Basic users.');
+    $location.path('/home'); // Redirect unauthorized users to /home
+    return;
+  }
+
 	var getMovies = function(){
 			$http.get('/movie/getMovie').success(function(response) {
 					console.log('READ IS SUCCESSFUL');
@@ -228,4 +235,9 @@ sampleApp.controller('AssignController', function($scope, $http, $log, $location
 	};
 
 
+	// Helper function to read cookies
+	function getCookie(name) {
+		const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+		return match ? match[2] : null;
+	  }
 });

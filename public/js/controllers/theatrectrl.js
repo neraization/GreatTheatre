@@ -2,6 +2,15 @@ sampleApp.controller('theatreController', function($scope, $http, $log, $locatio
 
     $scope.tagline = 'Theatre Administration';
 
+        $scope.checkAccess = function() {
+            var cookieInfo = document.cookie;
+
+            if (!cookieInfo.includes("role=registered") && !cookieInfo.includes("role=admin")) {
+                alert("Access denied. Redirecting to Home Page.");
+                $location.path('/home');
+            }
+        };
+
 var loadCities = function() {
         $http.get('/city/getCity').success(function(response) {
             console.log('READ IS SUCCESSFUL');

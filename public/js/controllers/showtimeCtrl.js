@@ -2,6 +2,15 @@ sampleApp.controller('showtimeController', function($scope, $http, $log, $locati
 
   $scope.tagline = "Schedule Your Next Showtime with Ease";
 
+  $scope.checkAccess = function() {
+    var cookieInfo = document.cookie;
+
+    if (!cookieInfo.includes("role=registered") && !cookieInfo.includes("role=admin")) {
+      alert("Access denied. Redirecting to Home Page.");
+      $location.path('/home');
+    }
+  };
+
   $scope.formatTime = function () {
     const time = $scope.showtime.showTimings; // e.g., 1970-01-01T20:31:00.000Z
     if (time) {

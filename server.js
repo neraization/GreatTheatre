@@ -13,6 +13,8 @@ var theatre = require('./app/theatre-crud');
 var showtime = require('./app/showtime-crud');
 var assign = require('./app/assign-crud');
 var book = require('./app/bookings-crud');
+var login = require('./app/login');
+
 
 // configuration ===========================================
 
@@ -26,6 +28,8 @@ app.use('/theatre', theatre);
 app.use('/showtime', showtime);
 app.use('/assign', assign);
 app.use('/book', book);
+app.use(login);
+//app.use('/assignRole', loginRoutes);
 
 //local database
 var mongo = require('mongodb');
