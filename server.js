@@ -32,7 +32,7 @@ app.use(login);
 //app.use('/assignRole', loginRoutes);
 
 //local database
-var mongo = require('mongodb');
+/* var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var dbHost = 'mongodb://localhost:27017/dbHost' //version 2
 mongoose.connect(dbHost);
@@ -41,9 +41,9 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
     console.log("Connected to DB");
-});
+}); */
 
-/*const mongoUri = process.env.MONGODB_URI;
+const mongoUri = process.env.MONGODB_URI;
 
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
@@ -52,7 +52,7 @@ mongoose.connect(mongoUri, {
   console.log('Connected to MongoDB');
 }).catch((error) => {
   console.error('Error connecting to MongoDB:', error);
-}); */
+}); 
 
 
 var port = process.env.PORT || 3000; // set our port
